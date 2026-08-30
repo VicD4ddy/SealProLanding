@@ -1,0 +1,6 @@
+{
+  "name": "Seal Pro - Industrial Solutions",
+  "description": "Juegos de empacaduras y sellos automotrices de alta precisión y calidad industrial para talleres y rectificadoras.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
