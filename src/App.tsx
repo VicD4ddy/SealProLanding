@@ -11,12 +11,20 @@ import { TechSpecsView } from './components/TechSpecsView';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { QuoteModal } from './components/QuoteModal';
 import { ContactModal } from './components/ContactModal';
+import { CursorGlow } from './components/CursorGlow';
+import { IntroSplash } from './components/IntroSplash';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { SEOHead } from './components/SEOHead';
+import { useLanguage } from './context/LanguageContext';
+import { getLocalizedProduct } from './utils/localize';
 
 export default function App() {
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [quoteModalOpen, setQuoteModalOpen] = useState<boolean>(false);
   const [contactModalOpen, setContactModalOpen] = useState<boolean>(false);
+  const [showIntro, setShowIntro] = useState<boolean>(false);
 
   // Quote Cart state with local storage fallback
   const [quoteItems, setQuoteItems] = useState<QuoteItem[]>(() => {
@@ -47,6 +55,7 @@ export default function App() {
   };
 
   const handleAddToQuote = (product: Product) => {
+    const localized = getLocalizedProduct(product, language);
     setQuoteItems((prev) => {
       const exists = prev.find((item) => item.product.id === product.id);
       if (exists) {
@@ -56,7 +65,7 @@ export default function App() {
       }
       return [...prev, { product, quantity: 1 }];
     });
-    showToast(`"${product.name}" agregado a la lista de cotización.`);
+    showToast(t.toast.addedToCart.replace('{name}', localized.name));
   };
 
   const handleUpdateQuantity = (productId: string, delta: number) => {
@@ -91,13 +100,25 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f9f9f9] text-[#1a1c1c] selection:bg-[#df0a1a] selection:text-white font-body">
+    <div className="min-h-screen flex flex-col bg-[#f9f9f9] text-[#1a1c1c] selection:bg-[#df0a1a] selection:text-white font-body relative">
+      {/* Intro Video Animation Splash (First-time visitor / Manual trigger) */}
+      <IntroSplash
+        forceShow={showIntro}
+        onComplete={() => setShowIntro(false)}
+      />
+
+      {/* Interactive Cursor Spotlight Glow */}
+      <CursorGlow />
+
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-[#1a1c1c] text-white border-l-4 border-[#df0a1a] px-4 py-3 shadow-industrial-black text-xs font-heading font-bold animate-in slide-in-from-bottom-5">
           {toastMessage}
         </div>
       )}
+
+      {/* Dynamic SEO Head and Structured Data (JSON-LD) */}
+      <SEOHead activeTab={activeTab} />
 
       {/* Header */}
       <Header
@@ -106,6 +127,7 @@ export default function App() {
         quoteItems={quoteItems}
         onOpenQuote={() => setQuoteModalOpen(true)}
         onOpenContact={() => setContactModalOpen(true)}
+        onReplayIntro={() => setShowIntro(true)}
       />
 
       {/* Main Content Area */}
@@ -156,6 +178,7 @@ export default function App() {
       <Footer
         setActiveTab={setActiveTab}
         onOpenContact={() => setContactModalOpen(true)}
+        onReplayIntro={() => setShowIntro(true)}
       />
 
       {/* Product Detail Modal */}
@@ -184,7 +207,9 @@ export default function App() {
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
       />
+
+      {/* Floating Direct Conversion WhatsApp Trigger */}
+      <FloatingWhatsApp />
     </div>
   );
 }
-

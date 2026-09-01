@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Play } from 'lucide-react';
 import { ActiveTab } from '../types';
+import { useLanguage } from '../context/LanguageContext';
+import logoImg from '../assets/logo.png';
 
 interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;
   onOpenContact: () => void;
+  onReplayIntro?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) => {
+export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact, onReplayIntro }) => {
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -23,22 +27,22 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
   };
 
   return (
-    <footer className="bg-[#2f3131] dark:bg-[#2f3131] border-t-4 border-[#df0a1a] text-white">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4 md:px-16 py-12 max-w-[1280px] mx-auto">
+    <footer className="bg-[#2f3131] border-t-4 border-[#df0a1a] text-white">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-12 py-10 sm:py-12 max-w-[1280px] mx-auto">
         {/* Col 1: Brand & statement */}
         <div className="space-y-4">
           <img
             alt="Seal Pro"
-            className="h-8 bg-white px-2 py-1 rounded inline-block"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeWIP3P54iaYNsLXmvnaEQa6QysUgjLq1jTnh3PIgTtIgR6znGjROSqEfUwX4nbfjJm1PsIxL_ECxpxIbQ2S-hV4Ggn8rQcIA_zDDmlpwFOR9B_xbgo5YCQ3mPVtRLkJvpKh3yDmDYxoNMg4Pi0o66GXs35tJ7gE37CPOM25UUhQb4JNmQvB1sbJSTwCGOg3QdbDKF8HEEA1MAGRnIWaA0Q_ekPfxibom5cEieY7-SL0ji91H3E4xJA0Pi7T85qsYjS8Q"
+            className="h-10 md:h-12 w-auto object-contain inline-block"
+            src={logoImg}
           />
           <p className="font-body text-sm text-neutral-300 leading-relaxed">
-            Fabricación y distribución de juegos de empacaduras y sellos automotrices de nivel industrial. Alta ingeniería en estanqueidad para motores de alta exigencia.
+            {t.footer.description}
           </p>
           <div className="pt-2 text-xs text-neutral-400">
             <span className="inline-flex items-center gap-1.5 bg-neutral-800/80 px-2.5 py-1 border border-neutral-700">
               <span className="w-2 h-2 rounded-full bg-[#df0a1a]"></span>
-              Certificación ISO/TS 16949
+              {t.footer.isoCert}
             </span>
           </div>
         </div>
@@ -46,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
         {/* Col 2: Quick Links */}
         <div>
           <h4 className="font-heading text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-neutral-700 pb-2 inline-block">
-            ENLACES RÁPIDOS
+            {t.footer.quickLinks}
           </h4>
           <ul className="flex flex-col gap-2.5">
             <li>
@@ -57,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
                 }}
                 className="font-body text-sm text-neutral-300 hover:text-white hover:underline decoration-[#df0a1a] decoration-2 transition-all duration-200 cursor-pointer text-left"
               >
-                Catálogo Completo de Empacaduras
+                {t.footer.catalogLink}
               </button>
             </li>
             <li>
@@ -68,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
                 }}
                 className="font-body text-sm text-neutral-300 hover:text-white hover:underline decoration-[#df0a1a] decoration-2 transition-all duration-200 cursor-pointer text-left"
               >
-                Fichas Técnicas y Torques de Apriete
+                {t.footer.specsLink}
               </button>
             </li>
             <li>
@@ -79,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
                 }}
                 className="font-body text-sm text-neutral-300 hover:text-white hover:underline decoration-[#df0a1a] decoration-2 transition-all duration-200 cursor-pointer text-left"
               >
-                Garantía y Control de Calidad
+                {t.footer.qualityLink}
               </button>
             </li>
             <li>
@@ -90,7 +94,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
                 }}
                 className="font-body text-sm text-neutral-300 hover:text-white hover:underline decoration-[#df0a1a] decoration-2 transition-all duration-200 cursor-pointer text-left"
               >
-                Red de Distribuidores Autorizados
+                {t.footer.aboutLink}
               </button>
             </li>
             <li>
@@ -98,16 +102,27 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
                 onClick={onOpenContact}
                 className="font-body text-sm text-neutral-300 hover:text-white hover:underline decoration-[#df0a1a] decoration-2 transition-all duration-200 cursor-pointer text-left"
               >
-                Soporte Técnico Especializado
+                {t.footer.advisoryLink}
               </button>
             </li>
+            {onReplayIntro && (
+              <li>
+                <button
+                  onClick={onReplayIntro}
+                  className="font-body text-sm text-neutral-300 hover:text-white hover:underline decoration-[#df0a1a] decoration-2 transition-all duration-200 cursor-pointer text-left inline-flex items-center gap-1.5 pt-1"
+                >
+                  <Play className="w-3.5 h-3.5 text-[#df0a1a]" />
+                  {t.intro.replay}
+                </button>
+              </li>
+            )}
           </ul>
         </div>
 
         {/* Col 3: Contact */}
         <div>
           <h4 className="font-heading text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-neutral-700 pb-2 inline-block">
-            CONTACTO
+            {t.footer.contactTitle}
           </h4>
           <div className="space-y-3 font-body text-sm text-neutral-300">
             <p className="flex items-center gap-2">
@@ -116,18 +131,26 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
             </p>
             <p className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-[#df0a1a] flex-shrink-0" />
-              <span>+1 (555) 123-4567</span>
+              <a
+                href="https://wa.me/584144416287"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white hover:underline transition-colors"
+                title="Escribir por WhatsApp"
+              >
+                +58 (414) 441-6287
+              </a>
             </p>
             <p className="flex items-start gap-2">
               <MapPin className="w-4 h-4 text-[#df0a1a] flex-shrink-0 mt-0.5" />
-              <span>Parque Industrial Automotriz, Sector Mecánico Central</span>
+              <span>{t.footer.address}</span>
             </p>
             <div className="pt-2">
               <button
                 onClick={onOpenContact}
-                className="text-xs uppercase font-heading font-bold text-[#df0a1a] hover:text-white underline"
+                className="text-xs uppercase font-heading font-bold text-[#df0a1a] hover:text-white underline cursor-pointer"
               >
-                Escribir a Asesor de Planta &rarr;
+                {t.footer.talkToAdvisor}
               </button>
             </div>
           </div>
@@ -136,10 +159,10 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
         {/* Col 4: Newsletter */}
         <div>
           <h4 className="font-heading text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-neutral-700 pb-2 inline-block">
-            BOLETÍN TÉCNICO
+            {t.footer.newsletterTitle}
           </h4>
           <p className="text-xs text-neutral-300 mb-3">
-            Reciba boletines mensuales de torques de motores nuevos, manuales de instalación y lanzamientos de SKUs.
+            {t.footer.newsletterDesc}
           </p>
           <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
             <div className="flex">
@@ -148,12 +171,12 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="SU CORREO"
+                placeholder={t.footer.emailPlaceholder}
                 className="bg-[#1a1c1c] border-b-2 border-neutral-500 text-white font-body text-sm w-full px-3 py-2 focus:border-[#df0a1a] focus:ring-0 focus:outline-none placeholder-neutral-500"
               />
               <button
                 type="submit"
-                aria-label="Suscribirse al boletín técnico"
+                aria-label="Subscribe"
                 className="bg-[#df0a1a] text-white px-3 py-2 hover:bg-[#b20010] transition-colors cursor-pointer flex items-center justify-center"
               >
                 <Send className="w-4 h-4" />
@@ -162,7 +185,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
             {subscribed && (
               <p className="text-xs text-emerald-400 flex items-center gap-1 mt-1 font-semibold animate-in fade-in">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                ¡Suscrito al boletín de ingeniería!
+                {t.footer.subscribed}
               </p>
             )}
           </form>
@@ -172,12 +195,25 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
       <div className="border-t border-neutral-700 text-center py-4 bg-[#232424]">
         <div className="max-w-[1280px] mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-400 gap-2">
           <p className="font-heading uppercase tracking-wider">
-            © 2024 SEAL PRO INDUSTRIAL SOLUTIONS. ALL RIGHTS RESERVED.
+            {t.footer.rights}
           </p>
-          <div className="flex gap-4">
-            <span className="hover:text-white cursor-pointer">Términos y Condiciones</span>
+          <div className="flex flex-wrap items-center gap-3 md:gap-4">
+            <span className="hover:text-white cursor-pointer">{t.footer.terms}</span>
             <span>•</span>
-            <span className="hover:text-white cursor-pointer">Políticas de Garantía</span>
+            <span className="hover:text-white cursor-pointer">{t.footer.warrantyPolicy}</span>
+            {onReplayIntro && (
+              <>
+                <span>•</span>
+                <button
+                  onClick={onReplayIntro}
+                  className="hover:text-[#ff4d5a] text-neutral-400 hover:underline cursor-pointer transition-colors inline-flex items-center gap-1"
+                  title="Ver video de bienvenida"
+                >
+                  <Play className="w-3 h-3 text-[#df0a1a]" />
+                  {t.intro.replay}
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

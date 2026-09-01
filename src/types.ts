@@ -1,17 +1,26 @@
+export type ProductCategory = 'kit-empacadura' | 'kit-tiempo';
+
 export interface Product {
   id: string;
   sku: string;
   name: string;
-  category: 'juegos-full' | 'sellos-valvula' | 'culata-mls' | 'retenes' | 'multiple-carter';
+  nameEn?: string;
+  category: ProductCategory;
   categoryLabel: string;
+  categoryLabelEn?: string;
   summary: string;
+  summaryEn?: string;
   description: string;
+  descriptionEn?: string;
   image: string;
   isNew?: boolean;
   isFeatured?: boolean;
   material: string;
+  materialEn?: string;
   temperatureMax: string;
+  temperatureMaxEn?: string;
   pressureMax: string;
+  pressureMaxEn?: string;
   compatibility: {
     make: string;
     model: string;
@@ -20,11 +29,15 @@ export interface Product {
   }[];
   oemNumbers: string[];
   packageContents: string[];
+  packageContentsEn?: string[];
   specs: {
     label: string;
+    labelEn?: string;
     value: string;
+    valueEn?: string;
   }[];
   suggestedTorque: string;
+  suggestedTorqueEn?: string;
 }
 
 export interface TechSpec {
@@ -33,18 +46,22 @@ export interface TechSpec {
   brand: string;
   displacement: string;
   valves: string;
+  valvesEn?: string;
   cylinderCount: number;
   torqueStages: {
     stage: number;
     description: string;
-    torqueMetric: string; // e.g. "40 Nm"
-    torqueImperial: string; // e.g. "30 Lb-ft"
-    angleDegrees?: string; // e.g. "+90°"
+    descriptionEn?: string;
+    torqueMetric: string;
+    torqueImperial: string;
+    angleDegrees?: string;
   }[];
   boltSequenceCount: number;
   notes: string;
+  notesEn?: string;
   recommendedGasketSku: string;
-  surfaceRoughnessRa: string; // e.g. "0.5 - 0.8 µm (MLS)"
+  surfaceRoughnessRa: string;
+  surfaceRoughnessRaEn?: string;
 }
 
 export interface QuoteItem {

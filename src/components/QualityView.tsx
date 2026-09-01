@@ -1,77 +1,37 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Flame, Gauge, CheckCircle2, Award, Zap, Beaker, FileCheck } from 'lucide-react';
+import { ShieldCheck, Flame, Gauge, CheckCircle2, Award, Beaker, FileCheck } from 'lucide-react';
 import { ActiveTab } from '../types';
+import { useLanguage } from '../context/LanguageContext';
+import { RevealOnScroll } from './RevealOnScroll';
 
 interface QualityViewProps {
   setActiveTab: (tab: ActiveTab) => void;
   onOpenContact: () => void;
 }
 
-export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenContact }) => {
+export const QualityView: React.FC<QualityViewProps> = ({ onOpenContact }) => {
+  const { t, language } = useLanguage();
   const [selectedMaterial, setSelectedMaterial] = useState<'mls' | 'viton' | 'grafito' | 'acm'>('mls');
 
-  const materials = {
-    mls: {
-      name: 'MLS (Multi-Layer Steel) Acero Multicapa',
-      headline: 'Capacidad de sellado elástico para motores de alta compresión y turbo',
-      desc: 'Formado por láminas de acero inoxidable martensítico estampadas con precisión micrométrica. Cada relieve actúa como una línea de sellado por resorte elástico independiente, recubierto por una película de polímero elastomérico fluoroestabilizado (FKM) de 0.02 mm para micro-sellado superficial.',
-      specs: [
-        { label: 'Resistencia Térmica', value: 'Hasta 950 °C continuo' },
-        { label: 'Presión de Combustión', value: 'Hasta 280 Bar (4,060 PSI)' },
-        { label: 'Rugosidad Requerida', value: 'Ra 0.5 - 0.8 µm' },
-        { label: 'Resistencia a Combustibles', value: 'Gasolina, E85, Diésel Euro VI' }
-      ]
-    },
-    viton: {
-      name: 'Fluoroelastómero FKM (Viton® Grado Aeroespacial)',
-      headline: 'Control microscópico de lubricación en vástagos de válvulas y retenes',
-      desc: 'Formulación polimérica de fluorocarbono de alta pureza con aditivos anti-desgaste. Mantiene elasticidad y memoria dimensional aún tras 50,000 horas de operación a altas revoluciones, previniendo el endurecimiento y cristalización térmica típica de los sellos de nitrilo común.',
-      specs: [
-        { label: 'Rango de Temperatura', value: '-40 °C hasta +260 °C continuo' },
-        { label: 'Resistencia Química', value: '100% inmune a aceites sintéticos 0W-20 y PAO' },
-        { label: 'Dureza Shore A', value: '75 ± 3' },
-        { label: 'Vida Útil Estimada', value: 'Superior a 150,000 Km' }
-      ]
-    },
-    grafito: {
-      name: 'Grafito Expandido Reforzado con Núcleo Inox',
-      headline: 'Absorción de dilatación térmica diferencial en múltiples de escape y turbo',
-      desc: 'Lámina de grafito flexible de 99.8% de carbono puro acoplada mecánicamente a un alma de acero perforado bidireccional. No requiere adhesivos orgánicos que se carbonicen, proporcionando estanqueidad en choques térmicos súbitos de 1100°C.',
-      specs: [
-        { label: 'Pico de Choque Térmico', value: '1,100 °C' },
-        { label: 'Compresibilidad ASTM F36', value: '40 - 50%' },
-        { label: 'Recuperación Elástica', value: '> 15%' },
-        { label: 'Gases Ácidos / Sulfuros', value: 'Inerte y no corrosivo' }
-      ]
-    },
-    acm: {
-      name: 'Elastómero Poliacrílico (ACM) y Silicona RTV',
-      headline: 'Sellado de fluidos a baja presión para tapas de válvulas y cárter',
-      desc: 'Polímero diseñado para soportar niebla de aceite lubricante caliente y vapores de cárter (PCV) sin degradarse ni perder memoria elástica. Fabricado con topes metálicos limitadores de aplastamiento para garantizar el torque exacto de montaje.',
-      specs: [
-        { label: 'Temperatura de Trabajo', value: '-30 °C a +175 °C' },
-        { label: 'Hinchamiento en Aceite', value: '< 2% tras 1000h a 150°C' },
-        { label: 'Topes de Compresión', value: 'Acero embutido integrado' },
-        { label: 'Elasticidad Residual', value: '92% tras fatiga continua' }
-      ]
-    }
-  };
+  const materials = t.quality.materials;
 
   return (
-    <div className="w-full bg-[#f9f9f9] min-h-screen py-10 px-4 md:px-16 text-[#1a1c1c]">
-      <div className="max-w-[1280px] mx-auto space-y-12">
+    <div className="w-full bg-[#f9f9f9] min-h-screen py-8 sm:py-12 px-4 sm:px-6 lg:px-12 text-[#1a1c1c]">
+      <div className="max-w-[1280px] mx-auto space-y-8 sm:space-y-12">
         {/* Header */}
-        <div className="border-b-2 border-[#dadada] pb-6">
-          <div className="flex items-center gap-2 text-xs font-heading font-bold uppercase text-[#df0a1a] tracking-widest mb-1">
-            <span>INGENIERÍA & METROLOGÍA</span>
+        <RevealOnScroll direction="up" duration={600}>
+          <div className="border-b-2 border-[#dadada] pb-5 sm:pb-6">
+            <div className="flex items-center gap-2 text-xs font-heading font-bold uppercase text-[#df0a1a] tracking-widest mb-1">
+              <span>{t.quality.tag}</span>
+            </div>
+            <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#1a1c1c]">
+              {t.quality.title}
+            </h1>
+            <p className="font-body text-xs sm:text-sm text-[#5e3f3b] mt-1 max-w-3xl">
+              {t.quality.subtitle}
+            </p>
           </div>
-          <h1 className="font-heading text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#1a1c1c]">
-            SISTEMA DE GESTIÓN DE CALIDAD INDUSTRIAL
-          </h1>
-          <p className="font-body text-sm text-[#5e3f3b] mt-1 max-w-3xl">
-            Cada producto Seal-Pro es sometido a rigurosas pruebas de laboratorio bajo normas internacionales ASTM, ISO y SAE para garantizar cero fugas y máxima durabilidad.
-          </p>
-        </div>
+        </RevealOnScroll>
 
         {/* 3 Pillars of Quality */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -80,10 +40,10 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
               <Award className="w-6 h-6" />
             </div>
             <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
-              Normas ISO/TS 16949
+              {t.quality.pillars.isoTitle}
             </h3>
             <p className="font-body text-xs text-neutral-600 leading-relaxed">
-              Trazabilidad integral por número de lote desde la recepción de la materia prima virgen hasta el empaque al vacío final.
+              {t.quality.pillars.isoDesc}
             </p>
           </div>
 
@@ -92,10 +52,10 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
               <Flame className="w-6 h-6 text-[#df0a1a]" />
             </div>
             <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
-              Pruebas de Choque Térmico
+              {t.quality.pillars.thermalTitle}
             </h3>
             <p className="font-body text-xs text-neutral-600 leading-relaxed">
-              Ensayos continuos de ciclo frío-caliente de -20°C a 950°C para simular 200,000 kilómetros de estrés severo en motores de competición y trabajo pesado.
+              {t.quality.pillars.thermalDesc}
             </p>
           </div>
 
@@ -104,10 +64,10 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
               <Gauge className="w-6 h-6" />
             </div>
             <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
-              Control Dimensional Óptico
+              {t.quality.pillars.opticalTitle}
             </h3>
             <p className="font-body text-xs text-neutral-600 leading-relaxed">
-              Medición de tolerancias por proyección láser 3D con precisión de ±0.005 mm en pasos de agua, conductos de aceite y orificios de cilindros.
+              {t.quality.pillars.opticalDesc}
             </p>
           </div>
         </div>
@@ -117,10 +77,10 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-neutral-700 pb-6 mb-6">
             <div>
               <span className="text-xs font-heading font-bold text-[#df0a1a] uppercase tracking-wider block">
-                CIENCIA DE MATERIALES APLICADA
+                {t.quality.materialScienceTag}
               </span>
               <h2 className="font-heading text-2xl font-bold uppercase text-white">
-                EXPLORADOR DE POLÍMEROS Y METALES SEAL-PRO
+                {t.quality.materialScienceTitle}
               </h2>
             </div>
 
@@ -136,10 +96,10 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
                       : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
                   }`}
                 >
-                  {key === 'mls' && 'ACERO MLS'}
+                  {key === 'mls' && (language === 'es' ? 'ACERO MLS' : 'MLS STEEL')}
                   {key === 'viton' && 'VITON® FKM'}
-                  {key === 'grafito' && 'GRAFITO ARMADO'}
-                  {key === 'acm' && 'POLÍMERO ACM'}
+                  {key === 'grafito' && (language === 'es' ? 'GRAFITO ARMADO' : 'GRAPHITE')}
+                  {key === 'acm' && (language === 'es' ? 'POLÍMERO ACM' : 'ACM POLYMER')}
                 </button>
               ))}
             </div>
@@ -162,7 +122,7 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
             <div className="lg:col-span-5 bg-[#111213] p-5 border border-neutral-700 space-y-3">
               <h4 className="font-heading text-xs font-bold uppercase text-white tracking-wider border-b border-neutral-800 pb-2 flex items-center gap-2">
                 <FileCheck className="w-4 h-4 text-[#df0a1a]" />
-                PARÁMETROS TÉCNICOS ENSAYADOS
+                {language === 'es' ? 'PARÁMETROS TÉCNICOS ENSAYADOS' : 'TESTED TECHNICAL PARAMETERS'}
               </h4>
               <div className="space-y-2 text-xs">
                 {materials[selectedMaterial].specs.map((spec, i) => (
@@ -176,27 +136,70 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
           </div>
         </div>
 
+        {/* Test Bench Comparison Table */}
+        <div className="bg-white border border-[#dadada] p-6 md:p-8 shadow-sm">
+          <div className="mb-6">
+            <span className="text-xs font-heading font-bold text-[#df0a1a] uppercase tracking-wider block mb-1">
+              {t.quality.testBenchTag}
+            </span>
+            <h3 className="font-heading text-2xl font-bold uppercase text-[#1a1c1c]">
+              {t.quality.testBenchTitle}
+            </h3>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse font-body text-xs">
+              <thead>
+                <tr className="bg-[#1a1c1c] text-white font-heading uppercase text-xs">
+                  <th className="p-3.5 border-b border-neutral-700">{t.quality.testBenchHeaders.param}</th>
+                  <th className="p-3.5 border-b border-neutral-700 text-[#df0a1a] bg-[#111213]">{t.quality.testBenchHeaders.sealPro}</th>
+                  <th className="p-3.5 border-b border-neutral-700">{t.quality.testBenchHeaders.generic}</th>
+                  <th className="p-3.5 border-b border-neutral-700">{t.quality.testBenchHeaders.impact}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-neutral-200">
+                {t.quality.testBenchRows.map((row, idx) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-[#fcfcfc]'}>
+                    <td className="p-3.5 font-heading font-bold text-neutral-900">{row.param}</td>
+                    <td className="p-3.5 font-heading font-extrabold text-[#df0a1a] bg-red-50/50">{row.sealPro}</td>
+                    <td className="p-3.5 text-neutral-500">{row.generic}</td>
+                    <td className="p-3.5 text-neutral-800 font-medium">{row.impact}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         {/* Rectificadoras & Machining Standards */}
         <div className="bg-white border border-[#dadada] p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
             <h3 className="font-heading text-xl font-bold uppercase text-[#1a1c1c]">
-              GUÍA DE ACABADO SUPERFICIAL (Ra) PARA RECTIFICADORAS
+              {language === 'es' ? 'GUÍA DE ACABADO SUPERFICIAL (Ra) PARA RECTIFICADORAS' : 'SURFACE FINISH (Ra) GUIDE FOR ENGINE MACHINISTS'}
             </h3>
             <p className="font-body text-xs md:text-sm text-neutral-600 leading-relaxed">
-              La correcta estanqueidad de una empacadura de culata depende en un 50% de la calidad del producto y en un 50% del acabado superficial del bloque y la culata de aluminio o fundición de hierro.
+              {language === 'es'
+                ? 'La correcta estanqueidad de una empacadura de culata depende en un 50% de la calidad del producto y en un 50% del acabado superficial del bloque y la culata de aluminio o fundición de hierro.'
+                : 'Proper head gasket sealing depends 50% on product quality and 50% on precision surface finish across the aluminum or cast iron cylinder head and block deck.'}
             </p>
             <ul className="space-y-2 text-xs font-body text-neutral-800">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#df0a1a] flex-shrink-0 mt-0.5" />
-                <span><strong>Empaques MLS:</strong> Requieren rugosidad Ra entre 0.5 y 0.8 µm con rectificado plano continuo.</span>
+                <span>
+                  <strong>{language === 'es' ? 'Empaques MLS:' : 'MLS Gaskets:'}</strong> {language === 'es' ? 'Requieren rugosidad Ra entre 0.5 y 0.8 µm con rectificado plano continuo.' : 'Require Ra surface roughness between 0.5 and 0.8 µm with flat continuous milling.'}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#df0a1a] flex-shrink-0 mt-0.5" />
-                <span><strong>Empaques Grafitados:</strong> Toleran acabados de Ra hasta 1.5 µm gracias a la compresibilidad del grafito.</span>
+                <span>
+                  <strong>{language === 'es' ? 'Empaques Grafitados:' : 'Graphite Gaskets:'}</strong> {language === 'es' ? 'Toleran acabados de Ra hasta 1.5 µm gracias a la compresibilidad del grafito.' : 'Tolerate surface roughness up to Ra 1.5 µm thanks to flexible graphite conformability.'}
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#df0a1a] flex-shrink-0 mt-0.5" />
-                <span><strong>Desviación de Planitud Máxima:</strong> 0.05 mm en 4 cilindros / 0.08 mm en V6 y V8.</span>
+                <span>
+                  <strong>{language === 'es' ? 'Desviación de Planitud Máxima:' : 'Maximum Deck Warpage Limit:'}</strong> 0.05 mm (4 Cyl) / 0.08 mm (V6/V8).
+                </span>
               </li>
             </ul>
           </div>
@@ -204,16 +207,18 @@ export const QualityView: React.FC<QualityViewProps> = ({ setActiveTab, onOpenCo
           <div className="bg-[#f3f3f4] p-6 border border-neutral-300 text-center space-y-3">
             <Beaker className="w-10 h-10 text-[#df0a1a] mx-auto" />
             <h4 className="font-heading text-sm font-bold uppercase text-[#1a1c1c]">
-              Laboratorio de Homologación Seal-Pro
+              {language === 'es' ? 'Laboratorio de Homologación Seal-Pro' : 'Seal-Pro Testing & Certification Lab'}
             </h4>
             <p className="text-xs text-neutral-600 font-body max-w-sm mx-auto">
-              ¿Requiere certificación de estanqueidad para una flota comercial o desarrollo de empacaduras especiales?
+              {language === 'es'
+                ? '¿Requiere certificación de estanqueidad para una flota comercial o desarrollo de empacaduras especiales?'
+                : 'Need sealing validation reports for commercial fleets or custom gasket batch developments?'}
             </p>
             <button
               onClick={onOpenContact}
               className="bg-[#1a1c1c] hover:bg-[#df0a1a] text-white font-heading text-xs font-bold uppercase px-4 py-2.5 transition-colors cursor-pointer"
             >
-              Contactar al Dpto. de Ingeniería
+              {language === 'es' ? 'Contactar al Dpto. de Ingeniería' : 'Contact Engineering Department'}
             </button>
           </div>
         </div>
