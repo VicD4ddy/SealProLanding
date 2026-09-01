@@ -391,7 +391,7 @@ export const PRODUCTS_DATA: Product[] = [
     suggestedTorque: 'Tornillos de piñón: 65 Nm | Tensores: 22 Nm',
     suggestedTorqueEn: 'Sprocket bolts: 65 Nm | Tensioners: 22 Nm',
     compatibility: [
-      { make: 'Toyota', model: 'Hilux / Fortuner / 4Runner', years: '2005 - 2024', engine: '2.7L 2TR-FE / 4.0L 1GR-FE' },
+      { make: 'Toyota', model: 'Hilux / Fortuner / 4Runner', years: '2005 - 2026', engine: '2.7L 2TR-FE / 4.0L 1GR-FE' },
       { make: 'Chevrolet', model: 'Silverado / Tahoe / Suburban', years: '2000 - 2023', engine: '5.3L / 6.0L / 6.2L Vortec LS' },
       { make: 'Ford', model: 'F-150 / Mustang / Explorer', years: '2005 - 2022', engine: '4.6L / 5.4L 3V / 5.0L Coyote' },
       { make: 'Jeep', model: 'Grand Cherokee / Wrangler', years: '2011 - 2023', engine: '3.6L Pentastar V6' }
