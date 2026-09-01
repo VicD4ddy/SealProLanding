@@ -64,17 +64,29 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
     }
 
     // Update Open Graph tags
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://seal-pro-landing.vercel.app';
+    const isotipoUrl = `${origin}/isotipo.png`;
+
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', pageTitle);
 
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', pageDesc);
 
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', isotipoUrl);
+
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', `${origin}/`);
+
     const twitterTitle = document.querySelector('meta[name="twitter:title"]');
     if (twitterTitle) twitterTitle.setAttribute('content', pageTitle);
 
     const twitterDesc = document.querySelector('meta[name="twitter:description"]');
     if (twitterDesc) twitterDesc.setAttribute('content', pageDesc);
+
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', isotipoUrl);
 
     // Update html lang attribute
     document.documentElement.lang = language;
@@ -90,11 +102,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
       '@graph': [
         {
           '@type': ['AutoPartsStore', 'Organization', 'Brand'],
-          '@id': 'https://sealpro.com/#organization',
+          '@id': `${origin}/#organization`,
           name: 'Seal Pro Industrial Solutions',
           alternateName: 'Seal Pro',
-          url: 'https://sealpro.com',
-          logo: 'https://sealpro.com/assets/logo.png',
+          url: origin,
+          logo: isotipoUrl,
+          image: isotipoUrl,
           description:
             'Fabricante y distribuidor especializado en juegos de empacaduras de culata MLS, sellos de válvulas Viton® y kits de tiempo para motores automotrices.',
           telephone: '+58-414-4416287',
@@ -119,22 +132,22 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
         },
         {
           '@type': 'WebSite',
-          '@id': 'https://sealpro.com/#website',
-          url: 'https://sealpro.com',
+          '@id': `${origin}/#website`,
+          url: origin,
           name: 'Seal Pro',
           publisher: {
-            '@id': 'https://sealpro.com/#organization',
+            '@id': `${origin}/#organization`,
           },
           inLanguage: language === 'es' ? 'es-VE' : 'en-US',
           potentialAction: {
             '@type': 'SearchAction',
-            target: 'https://sealpro.com/?tab=products&search={search_term_string}',
+            target: `${origin}/?tab=products&search={search_term_string}`,
             'query-input': 'required name=search_term_string',
           },
         },
         {
           '@type': 'ItemList',
-          '@id': 'https://sealpro.com/#product-catalog',
+          '@id': `${origin}/#product-catalog`,
           name: language === 'es' ? 'Catálogo de Empacaduras Seal Pro' : 'Seal Pro Gasket Catalog',
           description:
             language === 'es'
@@ -149,7 +162,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
               name: product.name,
               sku: product.sku,
               mpn: product.sku,
-              image: `https://sealpro.com${product.image}`,
+              image: `${origin}${product.image}`,
               description: product.description,
               brand: {
                 '@type': 'Brand',
@@ -159,9 +172,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
                 '@type': 'Offer',
                 priceCurrency: 'USD',
                 availability: 'https://schema.org/InStock',
-                url: 'https://sealpro.com/?tab=products',
+                url: `${origin}/?tab=products`,
                 seller: {
-                  '@id': 'https://sealpro.com/#organization',
+                  '@id': `${origin}/#organization`,
                 },
               },
             },
