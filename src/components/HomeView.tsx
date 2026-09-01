@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedProduct } from '../utils/localize';
 import { TiltCard } from './TiltCard';
 import { RevealOnScroll } from './RevealOnScroll';
+import heroImg from '../assets/hero-sealpro.png';
 
 interface HomeViewProps {
   products: Product[];
@@ -143,9 +144,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
               }}
             >
               <img
-                className="w-full h-auto object-cover block"
-                alt="Seal Pro Brandbook and Product Presentation"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbWQyI6tIxFBOn5ij6Q89rxJvWXu3Sen12d3FI1eRyfc7DnFzcTUeJHVh8-ucfARa56Oz49-7Um5yU7qGLj2RzPCEYwlqoZIAVtK_cNkKE3bfkaM289t_aHJx8tq4mThE4a6Weowy0692aMOndS3yG8wsqseRUSV9SaheS30l3v7PI8AXtxASvG-BvB3BIOUcrLRHhALv7rWGwnYoofZWW-TDGEUzDEcrFUUmuolvSYlpEunC9cL0PIqYr2zprlTkcxTs"
+                className="w-full h-auto object-contain block bg-[#f4f4f4]"
+                alt="Seal Pro Professional Sealing Packaging"
+                src={heroImg}
               />
 
               {/* Floating 3D Badge Overlay */}
