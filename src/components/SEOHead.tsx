@@ -64,7 +64,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
     }
 
     // Update Open Graph tags
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://seal-pro-landing.vercel.app';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://sealproautoparts.com';
     const isotipoUrl = `${origin}/isotipo.png`;
 
     const ogTitle = document.querySelector('meta[property="og:title"]');
