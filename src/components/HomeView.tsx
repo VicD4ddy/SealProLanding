@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Product, ActiveTab } from '../types';
-import { Sparkles, Search, ArrowRight, ShieldCheck, Flame, Gauge, Check, Layers, Zap, Maximize2, Clock, Truck, PhoneCall, Cpu, Eye } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Flame, Gauge, Check, Layers, Zap, Maximize2, Clock, Truck, PhoneCall } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedProduct } from '../utils/localize';
 import { TiltCard } from './TiltCard';
 import { RevealOnScroll } from './RevealOnScroll';
-import { BrandTicker } from './BrandTicker';
-import { StatsSection } from './StatsSection';
-import { MlsLayerExploder } from './MlsLayerExploder';
 import heroImg from '../assets/hero-sealpro.png';
 
 interface HomeViewProps {
@@ -31,38 +28,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   // Mouse Parallax 3D State for Hero Section
   const [heroMouse, setHeroMouse] = useState({ x: 0, y: 0 });
-  const [isLaserActive, setIsLaserActive] = useState<boolean>(true);
-  const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
-
-  const heroHotspots = [
-    {
-      id: 1,
-      top: '25%',
-      left: '26%',
-      titleEs: 'Recubrimiento Viton® FKM',
-      titleEn: 'Viton® FKM Coating',
-      descEs: 'Película elástica de 25 micras para sellado microtérmico hasta 280°C',
-      descEn: '25-micron fluoropolymer film for micro-thermal sealing up to 280°C',
-    },
-    {
-      id: 2,
-      top: '52%',
-      left: '68%',
-      titleEs: 'Acero Inoxidable MLS 301',
-      titleEn: 'MLS 301 Stainless Steel',
-      descEs: 'Láminas templadas de temple elástico contra fatiga mecánica',
-      descEn: 'Full-hard spring-tempered leaves resisting mechanical fatigue',
-    },
-    {
-      id: 3,
-      top: '74%',
-      left: '40%',
-      titleEs: 'Reborde Stopper Activo',
-      titleEn: 'Active Stopper Bead',
-      descEs: 'Sello perimetral de combustión reforzado para soportar >2,200 PSI',
-      descEn: 'Reinforced combustion perimeter seal rated for >2,200 PSI explosions',
-    },
-  ];
 
   const handleHeroMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -108,11 +73,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
           <RevealOnScroll direction="up" duration={700}>
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#eeeeee] border border-neutral-300 text-xs font-heading font-bold uppercase text-[#b20010] mb-3 sm:mb-4 hover:border-[#df0a1a] transition-colors cursor-default">
-                <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                {t.home.badge}
-              </div>
-
               <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1a1c1c] uppercase mb-3 sm:mb-4 leading-[1.12] tracking-tight">
                 <span>{t.home.heroTitle1} </span>
                 <span className="text-[#df0a1a] block sm:inline">{t.home.heroTitle2}</span>
@@ -173,69 +133,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             {/* Main Interactive 3D Card */}
             <div
-              className="relative z-10 border border-[#dadada] shadow-industrial-black bg-white transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d] hover:shadow-2xl overflow-hidden"
+              className="relative z-10 border border-[#dadada] shadow-industrial-black bg-white transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d] hover:shadow-2xl"
               style={{
                 transform: `rotateY(${heroMouse.x * 8}deg) rotateX(${-heroMouse.y * 8}deg) translateZ(10px)`,
               }}
             >
-              {/* Hardware-Accelerated Laser CMM Inspection Sweep */}
-              {isLaserActive && <div className="animate-laser-scan" />}
-
               <img
                 className="w-full h-auto object-contain block bg-[#f4f4f4]"
                 alt="Seal Pro Professional Sealing Packaging"
                 src={heroImg}
               />
-
-              {/* Interactive Laser Toggle Control Button */}
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsLaserActive(!isLaserActive);
-                }}
-                className="absolute bottom-11 right-3 z-30 bg-[#111213]/90 hover:bg-[#df0a1a] text-white text-[9px] font-heading font-extrabold uppercase px-2 py-1 flex items-center gap-1.5 border border-neutral-700 transition-colors shadow-md cursor-pointer active:scale-95 [transform:translateZ(30px)]"
-                title={language === 'es' ? 'Alternar escaneo láser CMM' : 'Toggle CMM laser inspection'}
-              >
-                <span className={`w-1.5 h-1.5 rounded-full ${isLaserActive ? 'bg-red-500 animate-ping' : 'bg-neutral-500'}`} />
-                <span>{isLaserActive ? (language === 'es' ? 'LÁSER CMM: ON' : 'CMM LASER: ON') : (language === 'es' ? 'LÁSER CMM: OFF' : 'CMM LASER: OFF')}</span>
-              </button>
-
-              {/* Interactive Hotspot Radar Pins on Packaging */}
-              {heroHotspots.map((hs) => (
-                <div
-                  key={hs.id}
-                  className="absolute z-30"
-                  style={{ top: hs.top, left: hs.left }}
-                >
-                  <div
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveHotspot(activeHotspot === hs.id ? null : hs.id);
-                    }}
-                    onMouseEnter={() => setActiveHotspot(hs.id)}
-                    onMouseLeave={() => setActiveHotspot(null)}
-                    className="relative cursor-pointer group"
-                  >
-                    <div className="w-5 h-5 rounded-full bg-[#df0a1a] border-2 border-white flex items-center justify-center shadow-lg animate-radar-pulse hover:scale-125 transition-transform">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                    </div>
-
-                    {/* Floating Tooltip Callout */}
-                    {activeHotspot === hs.id && (
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-[#111213]/95 backdrop-blur-xs border border-[#df0a1a] p-2 text-white shadow-xl z-40 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
-                        <div className="text-[10px] font-heading font-extrabold uppercase text-[#df0a1a] flex items-center gap-1">
-                          <Cpu className="w-3 h-3" />
-                          <span>{language === 'es' ? hs.titleEs : hs.titleEn}</span>
-                        </div>
-                        <div className="text-[9px] font-body text-neutral-300 mt-0.5 leading-snug">
-                          {language === 'es' ? hs.descEs : hs.descEn}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
 
               {/* Floating 3D Badge Overlay */}
               <div
@@ -261,9 +168,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </RevealOnScroll>
         </div>
       </section>
-
-      {/* Infinite OEM Vehicle Brands & Engineering Certifications Marquee */}
-      <BrandTicker />
 
       {/* 2. Interactive Workshop Fast Compatibility Finder Bar with Slide-Up */}
       <RevealOnScroll direction="up" delay={100} duration={600}>
@@ -319,9 +223,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
         </section>
       </RevealOnScroll>
-
-      {/* Animated Heritage & Sealing Benchmark Stats */}
-      <StatsSection />
 
       {/* 3. About Company Brief / History Statement with Staggered Cards */}
       <section className="bg-[#2f3131] text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-12 relative bg-pattern">
@@ -388,23 +289,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </div>
               </div>
             </div>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      {/* Interactive 3D MLS Technology Exploder Section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-12 bg-[#1a1c1c] border-b-2 border-[#df0a1a]">
-        <div className="max-w-[1280px] mx-auto">
-          <RevealOnScroll direction="up" duration={700}>
-            <div className="mb-6 sm:mb-8 border-b border-neutral-800 pb-4">
-              <span className="text-xs font-heading font-bold uppercase text-[#df0a1a] tracking-widest block mb-1">
-                {language === 'es' ? 'INGENIERÍA METALÚRGICA APLICADA' : 'APPLIED METALLURGICAL ENGINEERING'}
-              </span>
-              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-white uppercase tracking-tight">
-                {language === 'es' ? 'Despiece de Capas de Acero Multilámina (MLS)' : 'Multi-Layer Steel (MLS) Exploded Anatomy'}
-              </h2>
-            </div>
-            <MlsLayerExploder />
           </RevealOnScroll>
         </div>
       </section>

@@ -3,8 +3,6 @@ import { ShieldCheck, Flame, Gauge, CheckCircle2, Award, Beaker, FileCheck } fro
 import { ActiveTab } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { RevealOnScroll } from './RevealOnScroll';
-import { MlsLayerExploder } from './MlsLayerExploder';
-import { AnimatedCounter } from './AnimatedCounter';
 
 interface QualityViewProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -37,149 +35,106 @@ export const QualityView: React.FC<QualityViewProps> = ({ onOpenContact }) => {
 
         {/* 3 Pillars of Quality */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <RevealOnScroll direction="up" delay={0} duration={600}>
-            <div className="bg-white border-2 border-[#1a1c1c] p-6 shadow-industrial-black-sm hover-lift h-full flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-[#df0a1a] text-white flex items-center justify-center font-bold clip-slant-right">
-                    <Award className="w-6 h-6" />
-                  </div>
-                  <div className="font-heading font-extrabold text-2xl text-[#1a1c1c]">
-                    <AnimatedCounter end={100} suffix="%" duration={1600} />
-                  </div>
-                </div>
-                <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
-                  {t.quality.pillars.isoTitle}
-                </h3>
-                <p className="font-body text-xs text-neutral-600 leading-relaxed">
-                  {t.quality.pillars.isoDesc}
-                </p>
-              </div>
-              <div className="pt-3 border-t border-neutral-100 text-[10px] font-heading font-bold text-[#df0a1a] uppercase tracking-wider">
-                ISO/TS 16949 COMPLIANT
-              </div>
+          <div className="bg-white border-2 border-[#1a1c1c] p-6 shadow-industrial-black-sm">
+            <div className="w-12 h-12 bg-[#df0a1a] text-white flex items-center justify-center font-bold mb-4 clip-slant-right">
+              <Award className="w-6 h-6" />
             </div>
-          </RevealOnScroll>
+            <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
+              {t.quality.pillars.isoTitle}
+            </h3>
+            <p className="font-body text-xs text-neutral-600 leading-relaxed">
+              {t.quality.pillars.isoDesc}
+            </p>
+          </div>
 
-          <RevealOnScroll direction="up" delay={150} duration={600}>
-            <div className="bg-white border-2 border-[#1a1c1c] p-6 shadow-industrial-black-sm hover-lift h-full flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-[#1a1c1c] text-white flex items-center justify-center font-bold clip-slant-right">
-                    <Flame className="w-6 h-6 text-[#df0a1a]" />
-                  </div>
-                  <div className="font-heading font-extrabold text-2xl text-[#df0a1a]">
-                    <AnimatedCounter end={280} prefix="+" suffix="°C" duration={1800} />
-                  </div>
-                </div>
-                <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
-                  {t.quality.pillars.thermalTitle}
-                </h3>
-                <p className="font-body text-xs text-neutral-600 leading-relaxed">
-                  {t.quality.pillars.thermalDesc}
-                </p>
-              </div>
-              <div className="pt-3 border-t border-neutral-100 text-[10px] font-heading font-bold text-neutral-600 uppercase tracking-wider">
-                VITON® FKM ELASTOMER
-              </div>
+          <div className="bg-white border-2 border-[#1a1c1c] p-6 shadow-industrial-black-sm">
+            <div className="w-12 h-12 bg-[#1a1c1c] text-white flex items-center justify-center font-bold mb-4 clip-slant-right">
+              <Flame className="w-6 h-6 text-[#df0a1a]" />
             </div>
-          </RevealOnScroll>
+            <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
+              {t.quality.pillars.thermalTitle}
+            </h3>
+            <p className="font-body text-xs text-neutral-600 leading-relaxed">
+              {t.quality.pillars.thermalDesc}
+            </p>
+          </div>
 
-          <RevealOnScroll direction="up" delay={300} duration={600}>
-            <div className="bg-white border-2 border-[#1a1c1c] p-6 shadow-industrial-black-sm hover-lift h-full flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-[#df0a1a] text-white flex items-center justify-center font-bold clip-slant-right">
-                    <Gauge className="w-6 h-6" />
-                  </div>
-                  <div className="font-heading font-extrabold text-2xl text-[#1a1c1c]">
-                    <AnimatedCounter end={0.05} prefix="< " suffix=" mm" decimals={2} duration={2000} />
-                  </div>
-                </div>
-                <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
-                  {t.quality.pillars.opticalTitle}
-                </h3>
-                <p className="font-body text-xs text-neutral-600 leading-relaxed">
-                  {t.quality.pillars.opticalDesc}
-                </p>
-              </div>
-              <div className="pt-3 border-t border-neutral-100 text-[10px] font-heading font-bold text-[#df0a1a] uppercase tracking-wider">
-                CMM 3D SCAN VERIFIED
-              </div>
+          <div className="bg-white border-2 border-[#1a1c1c] p-6 shadow-industrial-black-sm">
+            <div className="w-12 h-12 bg-[#df0a1a] text-white flex items-center justify-center font-bold mb-4 clip-slant-right">
+              <Gauge className="w-6 h-6" />
             </div>
-          </RevealOnScroll>
+            <h3 className="font-heading text-lg font-bold uppercase text-[#1a1c1c] mb-2">
+              {t.quality.pillars.opticalTitle}
+            </h3>
+            <p className="font-body text-xs text-neutral-600 leading-relaxed">
+              {t.quality.pillars.opticalDesc}
+            </p>
+          </div>
         </div>
 
         {/* Interactive Material Science Explorer */}
-        <RevealOnScroll direction="up" duration={700}>
-          <div className="bg-[#1a1c1c] text-white p-6 md:p-10 border border-neutral-700 shadow-industrial-red">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-neutral-700 pb-6 mb-6">
-              <div>
-                <span className="text-xs font-heading font-bold text-[#df0a1a] uppercase tracking-wider block">
-                  {t.quality.materialScienceTag}
-                </span>
-                <h2 className="font-heading text-2xl font-bold uppercase text-white">
-                  {t.quality.materialScienceTitle}
-                </h2>
-              </div>
+        <div className="bg-[#1a1c1c] text-white p-6 md:p-10 border border-neutral-700 shadow-industrial-red">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-neutral-700 pb-6 mb-6">
+            <div>
+              <span className="text-xs font-heading font-bold text-[#df0a1a] uppercase tracking-wider block">
+                {t.quality.materialScienceTag}
+              </span>
+              <h2 className="font-heading text-2xl font-bold uppercase text-white">
+                {t.quality.materialScienceTitle}
+              </h2>
+            </div>
 
-              {/* Material Selector Buttons */}
-              <div className="flex flex-wrap gap-2">
-                {(['mls', 'viton', 'grafito', 'acm'] as const).map((key) => (
-                  <button
-                    key={key}
-                    onClick={() => setSelectedMaterial(key)}
-                    className={`font-heading text-xs font-bold uppercase px-3 py-2 transition-all cursor-pointer ${
-                      selectedMaterial === key
-                        ? 'bg-[#df0a1a] text-white clip-slant-right shadow-md'
-                        : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
-                    }`}
-                  >
-                    {key === 'mls' && (language === 'es' ? 'ACERO MLS' : 'MLS STEEL')}
-                    {key === 'viton' && 'VITON® FKM'}
-                    {key === 'grafito' && (language === 'es' ? 'GRAFITO ARMADO' : 'GRAPHITE')}
-                    {key === 'acm' && (language === 'es' ? 'POLÍMERO ACM' : 'ACM POLYMER')}
-                  </button>
+            {/* Material Selector Buttons */}
+            <div className="flex flex-wrap gap-2">
+              {(['mls', 'viton', 'grafito', 'acm'] as const).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => setSelectedMaterial(key)}
+                  className={`font-heading text-xs font-bold uppercase px-3 py-2 transition-all cursor-pointer ${
+                    selectedMaterial === key
+                      ? 'bg-[#df0a1a] text-white clip-slant-right shadow-md'
+                      : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
+                  }`}
+                >
+                  {key === 'mls' && (language === 'es' ? 'ACERO MLS' : 'MLS STEEL')}
+                  {key === 'viton' && 'VITON® FKM'}
+                  {key === 'grafito' && (language === 'es' ? 'GRAFITO ARMADO' : 'GRAPHITE')}
+                  {key === 'acm' && (language === 'es' ? 'POLÍMERO ACM' : 'ACM POLYMER')}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Active Material Specs Display */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-4">
+              <h3 className="font-heading text-xl font-bold text-white uppercase text-[#df0a1a]">
+                {materials[selectedMaterial].name}
+              </h3>
+              <p className="font-heading text-sm font-semibold text-neutral-200">
+                {materials[selectedMaterial].headline}
+              </p>
+              <p className="font-body text-xs md:text-sm text-neutral-400 leading-relaxed">
+                {materials[selectedMaterial].desc}
+              </p>
+            </div>
+
+            <div className="lg:col-span-5 bg-[#111213] p-5 border border-neutral-700 space-y-3">
+              <h4 className="font-heading text-xs font-bold uppercase text-white tracking-wider border-b border-neutral-800 pb-2 flex items-center gap-2">
+                <FileCheck className="w-4 h-4 text-[#df0a1a]" />
+                {language === 'es' ? 'PARÁMETROS TÉCNICOS ENSAYADOS' : 'TESTED TECHNICAL PARAMETERS'}
+              </h4>
+              <div className="space-y-2 text-xs">
+                {materials[selectedMaterial].specs.map((spec, i) => (
+                  <div key={i} className="flex justify-between items-center py-1.5 border-b border-neutral-800/60">
+                    <span className="text-neutral-400 font-medium">{spec.label}:</span>
+                    <span className="font-heading font-bold text-white text-right">{spec.value}</span>
+                  </div>
                 ))}
               </div>
             </div>
-
-            {/* Active Material Specs Display */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-7 space-y-4">
-                <h3 className="font-heading text-xl font-bold text-white uppercase text-[#df0a1a]">
-                  {materials[selectedMaterial].name}
-                </h3>
-                <p className="font-heading text-sm font-semibold text-neutral-200">
-                  {materials[selectedMaterial].headline}
-                </p>
-                <p className="font-body text-xs md:text-sm text-neutral-400 leading-relaxed">
-                  {materials[selectedMaterial].desc}
-                </p>
-              </div>
-
-              <div className="lg:col-span-5 bg-[#111213] p-5 border border-neutral-700 space-y-3">
-                <h4 className="font-heading text-xs font-bold uppercase text-white tracking-wider border-b border-neutral-800 pb-2 flex items-center gap-2">
-                  <FileCheck className="w-4 h-4 text-[#df0a1a]" />
-                  {language === 'es' ? 'PARÁMETROS TÉCNICOS ENSAYADOS' : 'TESTED TECHNICAL PARAMETERS'}
-                </h4>
-                <div className="space-y-2 text-xs">
-                  {materials[selectedMaterial].specs.map((spec, i) => (
-                    <div key={i} className="flex justify-between items-center py-1.5 border-b border-neutral-800/60">
-                      <span className="text-neutral-400 font-medium">{spec.label}:</span>
-                      <span className="font-heading font-bold text-white text-right">{spec.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
-        </RevealOnScroll>
-
-        {/* Interactive 3D MLS Layer Explosion Anatomy */}
-        <RevealOnScroll direction="up" duration={700}>
-          <MlsLayerExploder />
-        </RevealOnScroll>
+        </div>
 
         {/* Test Bench Comparison Table */}
         <div className="bg-white border border-[#dadada] p-6 md:p-8 shadow-sm">
