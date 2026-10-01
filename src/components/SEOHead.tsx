@@ -111,7 +111,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
           description:
             'Fabricante y distribuidor especializado en juegos de empacaduras de culata MLS, sellos de válvulas Viton® y kits de tiempo para motores automotrices.',
           telephone: '+58-414-4416287',
-          email: 'info@sealpro.com',
+          email: 'Sealproautoparts@gmail.com',
           sameAs: [
             'https://wa.me/584144416287',
           ],
@@ -124,9 +124,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
           },
           address: {
             '@type': 'PostalAddress',
-            addressCountry: 'VE',
-            addressLocality: 'Valencia',
-            addressRegion: 'Carabobo',
+            streetAddress: '1097 Manigan Ave',
+            addressLocality: 'Oviedo',
+            addressRegion: 'FL',
+            postalCode: '32765',
+            addressCountry: 'US',
           },
           priceRange: '$$',
         },

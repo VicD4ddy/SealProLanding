@@ -131,7 +131,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact, onR
           <div className="space-y-3 font-body text-sm text-neutral-300">
             <p className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-[#df0a1a] flex-shrink-0" />
-              <span>info@sealpro.com</span>
+              <a
+                href="mailto:Sealproautoparts@gmail.com"
+                className="hover:text-white hover:underline transition-colors"
+                title="Enviar correo"
+              >
+                Sealproautoparts@gmail.com
+              </a>
             </p>
             <p className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-[#df0a1a] flex-shrink-0" />

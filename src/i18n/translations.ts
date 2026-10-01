@@ -14,7 +14,7 @@ export const TRANSLATIONS = {
       getQuote: 'COTIZAR',
       requestQuoteFull: 'SOLICITAR COTIZACIÓN RÁPIDA',
       topBannerText: 'Línea directa para talleres y rectificadoras automotrices | Envíos a nivel nacional e internacional',
-      topBannerPhone: 'SOPORTE TÉCNICO: +58 (414) 441-6287 | info@sealpro.com',
+      topBannerPhone: 'SOPORTE TÉCNICO: +58 (414) 441-6287 | Sealproautoparts@gmail.com',
       watchAnimation: 'INTRO',
       switchLang: 'Cambiar idioma',
     },
@@ -351,7 +351,7 @@ export const TRANSLATIONS = {
       aboutLink: 'Red de Distribuidores Autorizados',
       advisoryLink: 'Soporte Técnico Especializado',
       contactTitle: 'CONTACTO',
-      address: 'Parque Industrial Automotriz, Sector Mecánico Central',
+      address: '1097 Manigan Ave. 32765 Oviedo, Florida, USA',
       talkToAdvisor: 'Escribir a Asesor de Planta →',
       newsletterTitle: 'BOLETÍN TÉCNICO',
       newsletterDesc: 'Reciba boletines mensuales de torques de motores nuevos, manuales de instalación y lanzamientos de SKUs.',
@@ -400,7 +400,7 @@ export const TRANSLATIONS = {
         },
         {
           title: '4. Derechos ARCO y Canales de Contacto',
-          content: 'Puede ejercer sus derechos de acceso, rectificación, cancelación u oposición en cualquier momento comunicándose directamente a info@sealpro.com o a través de nuestra línea oficial de WhatsApp (+58 414-441-6287).'
+          content: 'Puede ejercer sus derechos de acceso, rectificación, cancelación u oposición en cualquier momento comunicándose directamente a Sealproautoparts@gmail.com o a través de nuestra línea oficial de WhatsApp (+58 414-441-6287).'
         }
       ],
       termsSections: [
@@ -460,7 +460,7 @@ export const TRANSLATIONS = {
       getQuote: 'GET A QUOTE',
       requestQuoteFull: 'REQUEST FAST QUOTE',
       topBannerText: 'Direct hotline for automotive repair shops and engine rebuilders | Worldwide shipping available',
-      topBannerPhone: 'TECHNICAL SUPPORT: +58 (414) 441-6287 | info@sealpro.com',
+      topBannerPhone: 'TECHNICAL SUPPORT: +58 (414) 441-6287 | Sealproautoparts@gmail.com',
       watchAnimation: 'INTRO',
       switchLang: 'Change language',
     },
@@ -797,7 +797,7 @@ export const TRANSLATIONS = {
       aboutLink: 'Authorized Distributor Network',
       advisoryLink: 'Specialized Technical Support',
       contactTitle: 'CONTACT',
-      address: 'Automotive Industrial Park, Central Mechanical Sector',
+      address: '1097 Manigan Ave. 32765 Oviedo, Florida, USA',
       talkToAdvisor: 'Talk to Plant Engineer →',
       newsletterTitle: 'TECHNICAL NEWSLETTER',
       newsletterDesc: 'Receive monthly bulletins on new engine torque procedures, installation guides, and newly released SKUs.',
@@ -846,7 +846,7 @@ export const TRANSLATIONS = {
         },
         {
           title: '4. Privacy Rights & Contact Channels',
-          content: 'You may request verification, correction, or deletion of your contact records at any time by contacting info@sealpro.com or through our official WhatsApp hotline (+58 414-441-6287).'
+          content: 'You may request verification, correction, or deletion of your contact records at any time by contacting Sealproautoparts@gmail.com or through our official WhatsApp hotline (+58 414-441-6287).'
         }
       ],
       termsSections: [
