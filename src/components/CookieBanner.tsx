@@ -4,9 +4,10 @@ import { useLanguage } from '../context/LanguageContext';
 
 interface CookieBannerProps {
   onOpenPrivacy: () => void;
+  onVisibilityChange?: (visible: boolean) => void;
 }
 
-export const CookieBanner: React.FC<CookieBannerProps> = ({ onOpenPrivacy }) => {
+export const CookieBanner: React.FC<CookieBannerProps> = ({ onOpenPrivacy, onVisibilityChange }) => {
   const { t } = useLanguage();
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -15,13 +16,18 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({ onOpenPrivacy }) => 
       const consent = localStorage.getItem('sealpro_cookie_consent');
       if (!consent) {
         // Small delay so it smoothly appears after initial page load
-        const timer = setTimeout(() => setVisible(true), 1200);
+        const timer = setTimeout(() => {
+          setVisible(true);
+          onVisibilityChange?.(true);
+        }, 1200);
         return () => clearTimeout(timer);
+      } else {
+        onVisibilityChange?.(false);
       }
     } catch {
       // ignore
     }
-  }, []);
+  }, [onVisibilityChange]);
 
   const handleConsent = (level: 'all' | 'necessary') => {
     try {
@@ -30,6 +36,7 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({ onOpenPrivacy }) => 
       // ignore
     }
     setVisible(false);
+    onVisibilityChange?.(false);
   };
 
   if (!visible) return null;
@@ -38,7 +45,7 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({ onOpenPrivacy }) => 
     <aside
       role="region"
       aria-label="Consentimiento de cookies"
-      className="fixed bottom-0 inset-x-0 z-40 p-3 sm:p-4 bg-[#141515]/95 backdrop-blur-md border-t-2 border-[#df0a1a] shadow-2xl animate-in slide-in-from-bottom duration-300"
+      className="fixed bottom-0 inset-x-0 z-[45] p-3 sm:p-4 bg-[#141515]/95 backdrop-blur-md border-t-2 border-[#df0a1a] shadow-2xl animate-in slide-in-from-bottom duration-300"
     >
       <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-start sm:items-center gap-3 w-full md:w-auto">

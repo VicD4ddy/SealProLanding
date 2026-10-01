@@ -28,6 +28,7 @@ export default function App() {
   const [contactModalOpen, setContactModalOpen] = useState<boolean>(false);
   const [legalDocType, setLegalDocType] = useState<LegalDocType>(null);
   const [showIntro, setShowIntro] = useState<boolean>(false);
+  const [cookieBannerVisible, setCookieBannerVisible] = useState<boolean>(false);
 
   // Quote Cart state with local storage fallback
   const [quoteItems, setQuoteItems] = useState<QuoteItem[]>(() => {
@@ -115,7 +116,11 @@ export default function App() {
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#1a1c1c] text-white border-l-4 border-[#df0a1a] px-4 py-3 shadow-industrial-black text-xs font-heading font-bold animate-in slide-in-from-bottom-5">
+        <div
+          className={`fixed right-6 z-50 bg-[#1a1c1c] text-white border-l-4 border-[#df0a1a] px-4 py-3 shadow-industrial-black text-xs font-heading font-bold animate-in slide-in-from-bottom-5 transition-all duration-300 ${
+            cookieBannerVisible ? 'bottom-52 sm:bottom-44 md:bottom-28' : 'bottom-6'
+          }`}
+        >
           {toastMessage}
         </div>
       )}
@@ -222,10 +227,11 @@ export default function App() {
       {/* GDPR / Technical Cookie Consent Banner */}
       <CookieBanner
         onOpenPrivacy={() => setLegalDocType('privacy')}
+        onVisibilityChange={setCookieBannerVisible}
       />
 
       {/* Floating Direct Conversion WhatsApp Trigger */}
-      <FloatingWhatsApp />
+      <FloatingWhatsApp hasCookieBanner={cookieBannerVisible} />
     </div>
   );
 }

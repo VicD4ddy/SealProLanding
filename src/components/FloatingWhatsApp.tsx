@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
-export const FloatingWhatsApp: React.FC = () => {
+interface FloatingWhatsAppProps {
+  hasCookieBanner?: boolean;
+}
+
+export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ hasCookieBanner }) => {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -15,7 +19,11 @@ export const FloatingWhatsApp: React.FC = () => {
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(defaultMessage)}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+    <div
+      className={`fixed right-6 z-40 flex flex-col items-end transition-all duration-300 ease-in-out ${
+        hasCookieBanner ? 'bottom-48 sm:bottom-40 md:bottom-24' : 'bottom-6'
+      }`}
+    >
       {/* Tooltip Popup Bubble */}
       {isOpen && (
         <div className="mb-3 bg-white border-2 border-[#1a1c1c] shadow-industrial-black p-4 w-72 text-[#1a1c1c] animate-in slide-in-from-bottom-3 duration-200">
