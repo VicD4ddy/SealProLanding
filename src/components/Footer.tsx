@@ -8,15 +8,19 @@ interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;
   onOpenContact: () => void;
   onReplayIntro?: () => void;
+  onOpenLegal?: (type: 'privacy' | 'terms' | 'warranty') => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact, onReplayIntro }) => {
+export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact, onReplayIntro, onOpenLegal }) => {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
+    // Anti-SPAM Honeypot check: If filled, bot detected
+    if (honeypot.trim()) return;
     if (email.trim()) {
       setSubscribed(true);
       setTimeout(() => {
@@ -165,6 +169,17 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact, onR
             {t.footer.newsletterDesc}
           </p>
           <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
+            {/* Honeypot field invisible to humans, traps spam bots */}
+            <input
+              type="text"
+              name="b_fax_check"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
             <div className="flex">
               <input
                 type="email"
@@ -197,10 +212,30 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact, onR
           <p className="font-heading uppercase tracking-wider">
             {t.footer.rights}
           </p>
-          <div className="flex flex-wrap items-center gap-3 md:gap-4">
-            <span className="hover:text-white cursor-pointer">{t.footer.terms}</span>
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 md:gap-4">
+            <button
+              type="button"
+              onClick={() => onOpenLegal?.('privacy')}
+              className="hover:text-white hover:underline cursor-pointer transition-colors text-xs"
+            >
+              {t.footer.privacyPolicy}
+            </button>
             <span>•</span>
-            <span className="hover:text-white cursor-pointer">{t.footer.warrantyPolicy}</span>
+            <button
+              type="button"
+              onClick={() => onOpenLegal?.('terms')}
+              className="hover:text-white hover:underline cursor-pointer transition-colors text-xs"
+            >
+              {t.footer.terms}
+            </button>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={() => onOpenLegal?.('warranty')}
+              className="hover:text-white hover:underline cursor-pointer transition-colors text-xs"
+            >
+              {t.footer.warrantyPolicy}
+            </button>
             {onReplayIntro && (
               <>
                 <span>•</span>

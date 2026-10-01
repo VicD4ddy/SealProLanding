@@ -360,6 +360,7 @@ export const TRANSLATIONS = {
       rights: '© 2026 SEAL PRO INDUSTRIAL SOLUTIONS. ALL RIGHTS RESERVED.',
       terms: 'Términos y Condiciones',
       warrantyPolicy: 'Políticas de Garantía',
+      privacyPolicy: 'Política de Privacidad',
     },
 
     // Toast
@@ -375,6 +376,74 @@ export const TRANSLATIONS = {
       mute: 'SILENCIAR',
       replay: 'Ver animación de bienvenida',
       brandSubtitle: 'INGENIERÍA EN SELLADO DE MOTORES',
+    },
+
+    // Legal Modals
+    legal: {
+      privacyTitle: 'POLÍTICA DE PRIVACIDAD',
+      termsTitle: 'TÉRMINOS Y CONDICIONES',
+      warrantyTitle: 'POLÍTICAS DE GARANTÍA INDUSTRIAL',
+      closeBtn: 'Cerrar Documento',
+      lastUpdated: 'Última actualización: 2026',
+      privacySections: [
+        {
+          title: '1. Tratamiento y Protección de Datos Personales',
+          content: 'Seal Pro Industrial Solutions recopila exclusivamente datos de contacto profesional (nombre, empresa o taller, teléfono y correo electrónico) cuando usted solicita voluntariamente cotizaciones, asesorías técnicas o suscripción a boletines de ingeniería.'
+        },
+        {
+          title: '2. Finalidad del Tratamiento',
+          content: 'Los datos suministrados se emplean para responder requerimientos de cotización, proporcionar tablas de torques de apriete, coordinar logística de distribución y brindar soporte posventa. Seal Pro no comercializa, transfiere ni cede sus datos a terceros bajo ninguna circunstancia.'
+        },
+        {
+          title: '3. Cookies y Almacenamiento Local (Local Storage)',
+          content: 'Nuestra plataforma utiliza almacenamiento local técnico y cookies funcionales únicamente para recordar su preferencia de idioma, persistir su carrito de cotización y almacenar su consentimiento de navegación, garantizando una experiencia óptima y rápida.'
+        },
+        {
+          title: '4. Derechos ARCO y Canales de Contacto',
+          content: 'Puede ejercer sus derechos de acceso, rectificación, cancelación u oposición en cualquier momento comunicándose directamente a info@sealpro.com o a través de nuestra línea oficial de WhatsApp (+58 414-441-6287).'
+        }
+      ],
+      termsSections: [
+        {
+          title: '1. Uso del Catálogo y Especificaciones Técnicas',
+          content: 'La información técnica, tablas de torque, equivalencias OEM y referencias de motor publicadas en sealproautoparts.com tienen fines informativos para mecánicos, rectificadoras y distribuidores. Se recomienda siempre verificar con el manual del fabricante del vehículo antes de realizar el ensamble final.'
+        },
+        {
+          title: '2. Cotizaciones y Disponibilidad',
+          content: 'El envío de listas de cotización mediante el sitio web no constituye una orden de compra vinculante hasta que un asesor de ventas de Seal Pro verifique existencias de lote, confirme condiciones de pago y valide los tiempos de despacho.'
+        },
+        {
+          title: '3. Propiedad Intelectual',
+          content: 'Todas las marcas comerciales, fotografías de empaque, diagramas de capas MLS e isotipos mostrados son propiedad de Seal Pro Industrial Solutions o se utilizan exclusivamente con fines de referencia y compatibilidad automotriz.'
+        },
+        {
+          title: '4. Modificaciones del Servicio',
+          content: 'Seal Pro se reserva el derecho de actualizar especificaciones metalúrgicas, números de parte y términos de servicio para mantener los más altos estándares de calidad ISO/TS 16949.'
+        }
+      ],
+      warrantySections: [
+        {
+          title: '1. Cobertura de Sellado Hermético',
+          content: 'Seal Pro garantiza el 100% de estanqueidad contra fugas de compresión, refrigerante y aceite en todas sus empacaduras de culata de acero multilámina (MLS), grafito armado y sellos elastoméricos Viton® FKM, contra cualquier defecto de fabricación.'
+        },
+        {
+          title: '2. Condiciones Técnicas de Validez',
+          content: 'Para hacer efectiva la garantía, la instalación debe realizarse siguiendo estrictamente la secuencia de apriete angular y torques especificados por el fabricante, con superficies rectificadas (rugosidad Ra ≤ 30 µin recomendada en MLS) y pernos de culata nuevos cuando así lo requiera el tipo de motor.'
+        },
+        {
+          title: '3. Procedimiento de Inspección y Reemplazo',
+          content: 'En el improbable caso de una no conformidad, nuestro departamento de control de calidad inspeccionará el lote técnico correspondiente y procederá a la reposición inmediata de la pieza a través de nuestro distribuidor autorizado.'
+        }
+      ]
+    },
+
+    // Cookie Banner
+    cookieBanner: {
+      title: 'Privacidad y Cookies Técnicas',
+      message: 'Utilizamos cookies técnicas y almacenamiento local estrictamente necesarios para recordar sus productos cotizados y preferencias de idioma.',
+      accept: 'Aceptar Todas',
+      decline: 'Solo Necesarias',
+      viewPolicy: 'Ver Política de Privacidad'
     }
   },
 
@@ -737,6 +806,7 @@ export const TRANSLATIONS = {
       rights: '© 2026 SEAL PRO INDUSTRIAL SOLUTIONS. ALL RIGHTS RESERVED.',
       terms: 'Terms & Conditions',
       warrantyPolicy: 'Warranty Policies',
+      privacyPolicy: 'Privacy Policy',
     },
 
     // Toast
@@ -752,6 +822,74 @@ export const TRANSLATIONS = {
       mute: 'MUTE',
       replay: 'Watch welcome intro',
       brandSubtitle: 'ENGINE SEALING ENGINEERING',
+    },
+
+    // Legal Modals
+    legal: {
+      privacyTitle: 'PRIVACY POLICY',
+      termsTitle: 'TERMS & CONDITIONS',
+      warrantyTitle: 'INDUSTRIAL WARRANTY POLICY',
+      closeBtn: 'Close Document',
+      lastUpdated: 'Last Updated: 2026',
+      privacySections: [
+        {
+          title: '1. Personal Data Protection & Privacy',
+          content: 'Seal Pro Industrial Solutions collects only professional contact details (name, workshop or business name, phone, and email) when you voluntarily request quotes, engineering technical support, or subscribe to technical bulletins.'
+        },
+        {
+          title: '2. Purpose of Processing',
+          content: 'Information is utilized solely to process quote inquiries, supply bolt torque specifications, coordinate distributor logistics, and provide after-sales assistance. We never sell, transfer, or share your data with third parties.'
+        },
+        {
+          title: '3. Cookies & Local Storage',
+          content: 'Our website uses strictly necessary technical cookies and local storage (localStorage) only to remember your chosen language, preserve items in your quote cart, and retain navigation preferences.'
+        },
+        {
+          title: '4. Privacy Rights & Contact Channels',
+          content: 'You may request verification, correction, or deletion of your contact records at any time by contacting info@sealpro.com or through our official WhatsApp hotline (+58 414-441-6287).'
+        }
+      ],
+      termsSections: [
+        {
+          title: '1. Catalog Use & Technical Specifications',
+          content: 'All technical data, torque charts, OEM cross-references, and engine models published on sealproautoparts.com serve technical reference purposes for engine reconditioners, mechanics, and parts distributors. Always consult original OEM factory service manuals for final assembly.'
+        },
+        {
+          title: '2. Quotes & Factory Availability',
+          content: 'Submitting a quote cart inquiry through this portal does not constitute a binding purchase contract until an authorized Seal Pro sales consultant confirms batch availability, payment terms, and delivery schedules.'
+        },
+        {
+          title: '3. Intellectual Property',
+          content: 'All trademarks, packaging photography, MLS layer graphics, and logos displayed are proprietary to Seal Pro Industrial Solutions or referenced strictly for vehicle model fitment and compatibility identification.'
+        },
+        {
+          title: '4. Service & Specification Updates',
+          content: 'Seal Pro reserves the right to refine metallurgical specifications, part numbering, and terms to maintain ISO/TS 16949 certified quality standards.'
+        }
+      ],
+      warrantySections: [
+        {
+          title: '1. Airtight Sealing Coverage',
+          content: 'Seal Pro guarantees 100% airtight sealing performance against compression, coolant, and oil leakage across all Multi-Layer Steel (MLS), reinforced graphite cylinder head gaskets, and Viton® FKM valve stem seals against manufacturing defects.'
+        },
+        {
+          title: '2. Installation Requirements for Validity',
+          content: 'To validate warranty coverage, installation must follow manufacturer torque angle steps, verified deck flatness with recommended surface finish (Ra ≤ 30 µin for MLS), and new head bolts when required by engine design.'
+        },
+        {
+          title: '3. Inspection & Replacement Process',
+          content: 'In the unlikely event of an installation issue, our technical department will review batch traceability and issue an immediate replacement unit through your regional authorized distributor.'
+        }
+      ]
+    },
+
+    // Cookie Banner
+    cookieBanner: {
+      title: 'Privacy & Technical Cookies',
+      message: 'We use strictly necessary technical cookies and local storage to retain your quote cart items and language preferences.',
+      accept: 'Accept All',
+      decline: 'Essential Only',
+      viewPolicy: 'View Privacy Policy'
     }
   }
 };

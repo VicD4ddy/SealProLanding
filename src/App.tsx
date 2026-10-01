@@ -11,6 +11,8 @@ import { TechSpecsView } from './components/TechSpecsView';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { QuoteModal } from './components/QuoteModal';
 import { ContactModal } from './components/ContactModal';
+import { LegalModal, LegalDocType } from './components/LegalModal';
+import { CookieBanner } from './components/CookieBanner';
 import { CursorGlow } from './components/CursorGlow';
 import { IntroSplash } from './components/IntroSplash';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
@@ -24,6 +26,7 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [quoteModalOpen, setQuoteModalOpen] = useState<boolean>(false);
   const [contactModalOpen, setContactModalOpen] = useState<boolean>(false);
+  const [legalDocType, setLegalDocType] = useState<LegalDocType>(null);
   const [showIntro, setShowIntro] = useState<boolean>(false);
 
   // Quote Cart state with local storage fallback
@@ -179,6 +182,7 @@ export default function App() {
         setActiveTab={setActiveTab}
         onOpenContact={() => setContactModalOpen(true)}
         onReplayIntro={() => setShowIntro(true)}
+        onOpenLegal={(type) => setLegalDocType(type)}
       />
 
       {/* Product Detail Modal */}
@@ -206,6 +210,18 @@ export default function App() {
       <ContactModal
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
+      />
+
+      {/* Legal Documents Modal (Privacy, Terms, Warranty) */}
+      <LegalModal
+        type={legalDocType}
+        onClose={() => setLegalDocType(null)}
+        onSwitchType={(type) => setLegalDocType(type)}
+      />
+
+      {/* GDPR / Technical Cookie Consent Banner */}
+      <CookieBanner
+        onOpenPrivacy={() => setLegalDocType('privacy')}
       />
 
       {/* Floating Direct Conversion WhatsApp Trigger */}

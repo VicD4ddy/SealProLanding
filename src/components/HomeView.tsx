@@ -339,6 +339,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                         <img
                           alt={product.name}
                           src={product.image}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                         />
                         {/* Hover Overlay */}

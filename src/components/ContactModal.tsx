@@ -15,12 +15,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const [phone, setPhone] = useState('');
   const [topic, setTopic] = useState('asesoria-tecnica');
   const [message, setMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypot.trim()) return;
     setSubmitted(true);
   };
 
@@ -71,6 +73,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Invisible Honeypot to trap automated SPAM bots */}
+              <input
+                type="text"
+                name="b_user_website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
               <div className="bg-[#f3f3f4] p-3 border-l-4 border-[#df0a1a] text-xs text-neutral-700">
                 {t.contactModal.badge}
               </div>

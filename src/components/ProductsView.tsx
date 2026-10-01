@@ -242,6 +242,8 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
                           <img
                             alt={product.name}
                             src={product.image}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                           />
                           {/* Hover Overlay Hint */}
@@ -350,6 +352,8 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
                             <img
                               src={product.image}
                               alt={product.name}
+                              loading="lazy"
+                              decoding="async"
                               className="w-10 h-10 object-contain bg-white border border-neutral-200 p-1 flex-shrink-0"
                             />
                             <div>
