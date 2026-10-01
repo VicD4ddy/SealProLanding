@@ -14,7 +14,7 @@ export const TRANSLATIONS = {
       getQuote: 'COTIZAR',
       requestQuoteFull: 'SOLICITAR COTIZACIÓN RÁPIDA',
       topBannerText: 'Línea directa para talleres y rectificadoras automotrices | Envíos a nivel nacional e internacional',
-      topBannerPhone: 'SOPORTE TÉCNICO: +58 (414) 441-6287 | Sealproautoparts@gmail.com',
+      topBannerPhone: 'SOPORTE TÉCNICO: +1 (689) 347-2057 | Sealproautoparts@gmail.com',
       watchAnimation: 'INTRO',
       switchLang: 'Cambiar idioma',
     },
@@ -280,7 +280,7 @@ export const TRANSLATIONS = {
       contactName: 'Nombre del Responsable *',
       contactPlaceholder: 'ej. Juan Pérez (Jefe de Taller)',
       phone: 'Teléfono / WhatsApp *',
-      phonePlaceholder: 'ej. +58 414-4416287',
+      phonePlaceholder: 'ej. +1 (689) 347-2057',
       email: 'Correo Electrónico',
       emailPlaceholder: 'ej. contacto@taller.com',
       city: 'Ciudad y País *',
@@ -306,7 +306,7 @@ export const TRANSLATIONS = {
       email: 'Correo Electrónico *',
       emailPlaceholder: 'su.correo@ejemplo.com',
       phone: 'Teléfono / WhatsApp *',
-      phonePlaceholder: '+58 414-4416287',
+      phonePlaceholder: '+1 (689) 347-2057',
       topic: 'Motivo de Consulta *',
       topics: {
         advisory: 'Asesoría Técnica de Montaje y Torques',
@@ -400,7 +400,7 @@ export const TRANSLATIONS = {
         },
         {
           title: '4. Derechos ARCO y Canales de Contacto',
-          content: 'Puede ejercer sus derechos de acceso, rectificación, cancelación u oposición en cualquier momento comunicándose directamente a Sealproautoparts@gmail.com o a través de nuestra línea oficial de WhatsApp (+58 414-441-6287).'
+          content: 'Puede ejercer sus derechos de acceso, rectificación, cancelación u oposición en cualquier momento comunicándose directamente a Sealproautoparts@gmail.com o a través de nuestra línea oficial de WhatsApp (+1 689-347-2057).'
         }
       ],
       termsSections: [
@@ -460,7 +460,7 @@ export const TRANSLATIONS = {
       getQuote: 'GET A QUOTE',
       requestQuoteFull: 'REQUEST FAST QUOTE',
       topBannerText: 'Direct hotline for automotive repair shops and engine rebuilders | Worldwide shipping available',
-      topBannerPhone: 'TECHNICAL SUPPORT: +58 (414) 441-6287 | Sealproautoparts@gmail.com',
+      topBannerPhone: 'TECHNICAL SUPPORT: +1 (689) 347-2057 | Sealproautoparts@gmail.com',
       watchAnimation: 'INTRO',
       switchLang: 'Change language',
     },
@@ -726,7 +726,7 @@ export const TRANSLATIONS = {
       contactName: 'Contact Person *',
       contactPlaceholder: 'e.g. John Doe (Shop Foreman)',
       phone: 'Phone / WhatsApp *',
-      phonePlaceholder: 'e.g. +58 414-4416287',
+      phonePlaceholder: 'e.g. +1 (689) 347-2057',
       email: 'Email Address',
       emailPlaceholder: 'e.g. contact@workshop.com',
       city: 'City & Country *',
@@ -752,7 +752,7 @@ export const TRANSLATIONS = {
       email: 'Email Address *',
       emailPlaceholder: 'your.email@example.com',
       phone: 'Phone / WhatsApp *',
-      phonePlaceholder: '+58 414-4416287',
+      phonePlaceholder: '+1 (689) 347-2057',
       topic: 'Inquiry Topic *',
       topics: {
         advisory: 'Technical Installation & Torque Guidance',
@@ -846,7 +846,7 @@ export const TRANSLATIONS = {
         },
         {
           title: '4. Privacy Rights & Contact Channels',
-          content: 'You may request verification, correction, or deletion of your contact records at any time by contacting Sealproautoparts@gmail.com or through our official WhatsApp hotline (+58 414-441-6287).'
+          content: 'You may request verification, correction, or deletion of your contact records at any time by contacting Sealproautoparts@gmail.com or through our official WhatsApp hotline (+1 689-347-2057).'
         }
       ],
       termsSections: [

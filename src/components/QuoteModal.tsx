@@ -65,7 +65,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
           notes || 'Please reply with stock availability and wholesale pricing.'
         )}`;
 
-    window.open(`https://wa.me/584144416287?text=${message}`, '_blank');
+    window.open(`https://wa.me/16893472057?text=${message}`, '_blank');
   };
 
   return (

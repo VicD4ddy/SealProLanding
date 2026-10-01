@@ -6,7 +6,7 @@ export const FloatingWhatsApp: React.FC = () => {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
-  const phone = '584144416287';
+  const phone = '16893472057';
   const defaultMessage =
     language === 'es'
       ? 'Hola Seal Pro, requiero cotización y asesoría técnica sobre empacaduras de motor.'

@@ -60,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
             <a
-              href="https://wa.me/584144416287"
+              href="https://wa.me/16893472057"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-300 hover:text-white font-semibold tracking-wider text-[11px] transition-colors"

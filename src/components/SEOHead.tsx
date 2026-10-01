@@ -43,6 +43,18 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
         descEs: 'Consulte tablas de torque, secuencias de apriete angular en espiral y rugosidad superficial recomendada para motores Ford 4.0/5.4, GM 5.3 LS, HEMI 5.7 y más.',
         descEn: 'Look up cylinder head bolt torque sequences, angle tightening steps, and surface finish Ra specs for Ford, GM LS, HEMI 5.7, and more.',
       },
+      contact: {
+        titleEs: 'Contacto y Distribución | Seal Pro',
+        titleEn: 'Contact & Distribution | Seal Pro',
+        descEs: 'Contáctenos para cotizaciones al mayor, consultas técnicas y distribución de repuestos automotrices Seal Pro.',
+        descEn: 'Contact us for wholesale quotes, technical inquiries, and distribution of Seal Pro automotive parts.',
+      },
+      quote: {
+        titleEs: 'Cotizador de Repuestos | Seal Pro',
+        titleEn: 'Parts Quote Cart | Seal Pro',
+        descEs: 'Revise su lista de repuestos y solicite su cotización oficial a través de nuestro canal directo de atención.',
+        descEn: 'Review your parts list and request an official quote through our direct customer service channel.',
+      },
     };
 
     const currentSeo = seoData[activeTab] || seoData.home;
@@ -110,14 +122,14 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activeTab }) => {
           image: isotipoUrl,
           description:
             'Fabricante y distribuidor especializado en juegos de empacaduras de culata MLS, sellos de válvulas Viton® y kits de tiempo para motores automotrices.',
-          telephone: '+58-414-4416287',
+          telephone: '+1-689-347-2057',
           email: 'Sealproautoparts@gmail.com',
           sameAs: [
-            'https://wa.me/584144416287',
+            'https://wa.me/16893472057',
           ],
           contactPoint: {
             '@type': 'ContactPoint',
-            telephone: '+58-414-4416287',
+            telephone: '+1-689-347-2057',
             contactType: 'technical support',
             availableLanguage: ['Spanish', 'English'],
             areaServed: 'Worldwide',

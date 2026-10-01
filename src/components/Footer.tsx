@@ -142,13 +142,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact, onR
             <p className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-[#df0a1a] flex-shrink-0" />
               <a
-                href="https://wa.me/584144416287"
+                href="https://wa.me/16893472057"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white hover:underline transition-colors"
                 title="Escribir por WhatsApp"
               >
-                +58 (414) 441-6287
+                +1 (689) 347-2057
               </a>
             </p>
             <p className="flex items-start gap-2">
